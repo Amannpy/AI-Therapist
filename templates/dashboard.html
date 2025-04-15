@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">
+        <i class="fas fa-chart-line me-2"></i>Your Mental Health Dashboard
+    </h1>
+    
+    <div class="row">
+        <!-- Assessment Score Summary -->
+        <div class="col-md-4">
+            <div class="card dashboard-card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="fas fa-clipboard-check me-2"></i>Assessment</h5>
+                    <a href="{{ url_for('assessment') }}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-plus me-1"></i>New
+                    </a>
+                </div>
+                <div class="card-body text-center">
+                    <div class="display-4 mb-3">{{ "%.1f"|format(avg_score) }}</div>
+                    <p>Average Mental Health Score</p>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-primary" role="progressbar" 
+                             style="width: {{ avg_score }}%" 
+                             aria-valuenow="{{ avg_score }}" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+                    <small class="text-muted">
+                        Based on {{ assessments|length }} assessments
+                    </small>
+                </div>
+            </div>
+            
+            <div class="card dashboard-card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-history me-2"></i>Assessment History</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group assessment-list">
+                        {% for assessment in assessments %}
+                            <div class="list-group-item assessment-item" data-id="{{ assessment.id }}">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="assessment-date">
+                                            {{ assessment.created_at.strftime('%b %d, %Y') }}
+                                        </div>
+                                        <small class="text-muted">
+                                            {{ assessment.created_at.strftime('%I:%M %p') }}
+                                        </small>
+                                    </div>
+                                    <div class="assessment-score">
+                                        <span class="badge {% if assessment.score >= 80 %}bg-success{% elif assessment.score >= 60 %}bg-info{% elif assessment.score >= 40 %}bg-warning{% else %}bg-danger{% endif %}">
+                                            {{ "%.1f"|format(assessment.score) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="list-group-item">
+                                <p class="text-center mb-0">No assessments yet</p>
+                                <p class="text-center mt-2">
+                                    <a href="{{ url_for('assessment') }}" class="btn btn-sm btn-primary">
+                                        Take your first assessment
+                                    </a>
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Charts Area -->
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card dashboard-card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Mental Health Score Trend</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="assessment-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 mt-4">
+                    <div class="card dashboard-card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-heart me-2"></i>Emotional Well-being</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="emotion-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 mt-4">
+                    <div class="card dashboard-card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Assessment Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="assessment-details">
+                                <p class="text-center text-muted">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Select an assessment from the history to view details
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Pass data from backend to frontend
+    const assessmentDates = {{ assessment_dates|safe }};
+    const assessmentScores = {{ assessment_scores|safe }};
+    const emotionData = {{ emotion_data|safe }};
+</script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

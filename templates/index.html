@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <h1 class="hero-title">Your AI Mental Health Companion</h1>
+                <p class="lead mb-4">
+                    A safe space to check in on your mental well-being, have meaningful conversations,
+                    and receive personalized coping strategies — 24/7, confidentially, and securely.
+                </p>
+                <div class="d-flex justify-content-center gap-3">
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('chat') }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-comments me-2"></i>Start Chatting
+                        </a>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-chart-line me-2"></i>View Dashboard
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-user-plus me-2"></i>Get Started
+                        </a>
+                        <a href="{{ url_for('login') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <h2 class="text-center mb-5">Key Features</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Mental Health Assessment</h3>
+                        <p class="card-text">
+                            Take the MHQoL-7D assessment to track your emotional wellness over time
+                            with personalized insights.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>AI Conversation</h3>
+                        <p class="card-text">
+                            Chat with our empathetic AI assistant about your feelings, challenges, and
+                            receive evidence-based coping strategies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Progress Tracking</h3>
+                        <p class="card-text">
+                            Visualize your emotional journey with interactive charts and
+                            comprehensive progress reports.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works py-5">
+        <h2 class="text-center mb-5">How It Works</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="steps-container">
+                    <div class="step d-flex mb-4">
+                        <div class="step-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">1</div>
+                        <div>
+                            <h4>Create Your Account</h4>
+                            <p>Sign up to access all features and securely save your progress.</p>
+                        </div>
+                    </div>
+                    <div class="step d-flex mb-4">
+                        <div class="step-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">2</div>
+                        <div>
+                            <h4>Complete Assessment</h4>
+                            <p>Take the MHQoL-7D assessment to establish your baseline mental health score.</p>
+                        </div>
+                    </div>
+                    <div class="step d-flex mb-4">
+                        <div class="step-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">3</div>
+                        <div>
+                            <h4>Chat With AI Therapist</h4>
+                            <p>Start conversations about your feelings and receive personalized support.</p>
+                        </div>
+                    </div>
+                    <div class="step d-flex">
+                        <div class="step-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">4</div>
+                        <div>
+                            <h4>Track Your Progress</h4>
+                            <p>Watch your emotional well-being improve over time with detailed analytics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3">Important Note</h4>
+                        <p class="card-text">
+                            This AI therapist is designed to provide support and coping strategies, but it is not a replacement
+                            for professional mental health care. If you're experiencing severe distress or having thoughts of harming
+                            yourself, please reach out to a qualified healthcare provider or crisis service.
+                        </p>
+                        <div class="alert alert-info mt-3">
+                            <strong>Resources:</strong><br>
+                            <i class="fas fa-phone me-2"></i>National Suicide Prevention Lifeline: <strong>988</strong><br>
+                            <i class="fas fa-comment me-2"></i>Crisis Text Line: Text <strong>HOME</strong> to <strong>741741</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

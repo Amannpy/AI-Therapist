@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}Chat{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2><i class="fas fa-robot me-2"></i>AI Therapist</h2>
+                    <p class="mb-0">Chat confidentially about your thoughts and feelings</p>
+                </div>
+                
+                <div class="chat-history" id="chat-history">
+                    {% if not messages %}
+                        <!-- Welcome message -->
+                        <div class="message ai-message">
+                            <div class="message-content">
+                                Hello {{ current_user.username }}! I'm your AI mental health assistant. 
+                                How are you feeling today? You can talk to me about anything that's on your mind,
+                                and I'll do my best to help.
+                            </div>
+                        </div>
+                    {% else %}
+                        <!-- Display chat history -->
+                        {% for message in messages %}
+                            <div class="message {% if message.is_user %}user-message{% else %}ai-message{% endif %}">
+                                <div class="message-content">
+                                    {{ message.content|safe }}
+                                </div>
+                                
+                                {% if message.is_user and message.emotion %}
+                                    <div class="emotion-badge">{{ message.emotion }}</div>
+                                {% endif %}
+                                
+                                {% if not message.is_user %}
+                                    <div class="feedback-buttons" data-message-id="{{ message.id }}">
+                                        <button class="btn btn-sm {% if message.feedback == True %}btn-success{% else %}btn-outline-success{% endif %} feedback-button" 
+                                                data-feedback="positive" 
+                                                {% if message.feedback is not none %}disabled{% endif %}>
+                                            <i class="fas fa-thumbs-up"></i>
+                                        </button>
+                                        <button class="btn btn-sm {% if message.feedback == False %}btn-danger{% else %}btn-outline-danger{% endif %} feedback-button" 
+                                                data-feedback="negative"
+                                                {% if message.feedback is not none %}disabled{% endif %}>
+                                            <i class="fas fa-thumbs-down"></i>
+                                        </button>
+                                        
+                                        {% if message.feedback is not none %}
+                                            <span class="feedback-thanks">Thanks for your feedback!</span>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <!-- Typing indicator -->
+                    <div class="typing-indicator" id="typing-indicator">
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                    </div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <form id="message-form">
+                        <div class="input-group">
+                            <textarea class="form-control" id="message-input" placeholder="Type your message here..." rows="2" required></textarea>
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="alert alert-info mt-4">
+                <div class="d-flex">
+                    <i class="fas fa-info-circle fa-2x me-3"></i>
+                    <div>
+                        <p class="mb-1"><strong>Important:</strong> This AI is here to support you, but is not a replacement for professional help.</p>
+                        <p class="mb-0">If you're in crisis, please contact the National Suicide Prevention Lifeline at <strong>988</strong> or text <strong>HOME</strong> to <strong>741741</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}
