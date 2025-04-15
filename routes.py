@@ -3,7 +3,8 @@ from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.security import check_password_hash
 from app import app, db
 from models import User, Assessment, ChatMessage, EmotionRecord
-from utils.openai_helper import get_ai_response
+# Switch from OpenAI to Gemini
+from utils.gemini_helper import get_ai_response
 from utils.emotion_detection import detect_emotion
 from utils.rag import get_therapy_resources
 from utils.crisis_detection import detect_crisis
