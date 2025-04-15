@@ -106,24 +106,26 @@ main {
 
 .typing-indicator {
     display: none;
-    padding: 0.5rem 0.7rem;
+    padding: 0.6rem 0.8rem;
     background-color: var(--bs-gray-700);
-    border-radius: 12px;
+    border-radius: 15px;
     margin-right: auto;
-    width: 50px;
+    width: 60px;
     position: absolute;
     bottom: 80px;
     left: 16px;
     z-index: 100;
+    transform: scale(0.85);
+    transform-origin: left bottom;
 }
 
 .typing-dot {
     display: inline-block;
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background-color: var(--bs-light);
-    margin-right: 2px;
+    margin-right: 3px;
     animation: typing 1.5s infinite ease-in-out;
 }
 
