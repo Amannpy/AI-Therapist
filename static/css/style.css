@@ -45,11 +45,12 @@ main {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .chat-header {
     padding: 1rem;
-    background-color: var(--bs-primary);
+    background-color: var(--bs-gray-700);
     color: white;
 }
 
@@ -109,8 +110,11 @@ main {
     background-color: var(--bs-gray-700);
     border-radius: 15px;
     margin-right: auto;
-    margin-bottom: 1rem;
     width: 70px;
+    position: absolute;
+    bottom: 80px;
+    left: 16px;
+    z-index: 100;
 }
 
 .typing-dot {
