@@ -1,107 +1,72 @@
 [
   {
-    "title": "Cognitive Behavioral Therapy (CBT) Basics",
-    "summary": "CBT helps identify and challenge negative thought patterns and replace them with more realistic and positive ones.",
-    "content": "Cognitive Behavioral Therapy (CBT) is based on the idea that our thoughts, feelings, and behaviors are interconnected. By identifying and challenging negative thought patterns (cognitive distortions), we can change how we feel and behave. Common cognitive distortions include all-or-nothing thinking, catastrophizing, mental filtering, and emotional reasoning. CBT techniques include thought records, behavioral activation, and exposure therapy."
+    "id": 1,
+    "title": "Cognitive Behavioral Therapy",
+    "summary": "A structured approach that helps identify and change negative thought patterns, improving emotional responses and behaviors.",
+    "content": "Cognitive Behavioral Therapy (CBT) is a widely-used psychotherapeutic approach focused on identifying and modifying unhelpful thinking patterns and behaviors. The core principle of CBT is that our thoughts, feelings, and behaviors are interconnected, and negative thoughts can trap us in a cycle of negativity. By identifying distorted thinking patterns (such as catastrophizing, black-and-white thinking, and personalization), CBT helps individuals develop more balanced, realistic thought patterns. Techniques include thought records, behavioral experiments, and gradual exposure to feared situations.",
+    "keywords": ["anxiety", "depression", "stress", "negative thoughts", "cognitive distortions", "thought patterns"]
   },
   {
-    "title": "Deep Breathing Exercise",
-    "summary": "Breathe in slowly for 4 counts, hold for 2, exhale for 6. Repeat 5-10 times to activate the parasympathetic nervous system.",
-    "content": "Deep breathing, or diaphragmatic breathing, is a powerful tool for reducing stress and anxiety. When we're anxious, we tend to take shallow breaths, which can intensify feelings of stress. This exercise helps activate your parasympathetic nervous system ('rest and digest' response). Find a comfortable position, place one hand on your chest and the other on your abdomen. Breathe in slowly through your nose for 4 counts, feeling your abdomen expand. Hold for 2 counts, then exhale slowly through your mouth for 6 counts. Repeat 5-10 times, focusing on the rhythm of your breath."
+    "id": 2,
+    "title": "Mindfulness-Based Stress Reduction",
+    "summary": "A practice focusing on present-moment awareness to reduce stress and enhance emotional regulation.",
+    "content": "Mindfulness-Based Stress Reduction (MBSR) is an evidence-based program that uses mindfulness meditation to address stress, anxiety, depression, and pain. The practice involves paying attention to the present moment without judgment, observing thoughts and feelings as they arise without getting caught up in them. Regular mindfulness practice has been shown to reduce stress hormones, improve focus, enhance emotional regulation, and promote overall well-being. Key techniques include body scan meditation, sitting meditation, walking meditation, and mindful awareness of daily activities.",
+    "keywords": ["stress", "anxiety", "present moment", "meditation", "acceptance", "awareness"]
   },
   {
-    "title": "Grounding Technique: 5-4-3-2-1",
-    "summary": "Use the 5-4-3-2-1 technique: identify 5 things you see, 4 things you can touch, 3 things you hear, 2 things you smell, and 1 thing you taste.",
-    "content": "The 5-4-3-2-1 grounding technique is helpful during moments of anxiety, panic, or when feeling overwhelmed. It works by engaging your five senses, bringing your attention to the present moment. Look around and identify 5 things you can see, then touch 4 things around you, noting their textures and sensations. Listen for 3 things you can hear, from both near and far. Identify 2 things you can smell (or like to smell). Finally, notice 1 thing you can taste right now, or a favorite taste. This exercise helps interrupt the cycle of anxiety and brings your attention back to the present."
+    "id": 3,
+    "title": "Acceptance and Commitment Therapy",
+    "summary": "A therapeutic approach that emphasizes accepting difficult emotions while committing to actions aligned with personal values.",
+    "content": "Acceptance and Commitment Therapy (ACT) is a mindfulness-based behavioral therapy that encourages embracing thoughts and feelings rather than fighting or feeling guilty for them. ACT teaches psychological flexibility through six core processes: acceptance, cognitive defusion (learning to perceive thoughts simply as thoughts), being present, self as context, values, and committed action. The goal is not to eliminate difficult feelings but to develop a more accepting relationship with them while building a rich, full, and meaningful life based on personal values.",
+    "keywords": ["acceptance", "values", "mindfulness", "psychological flexibility", "commitment", "present moment"]
   },
   {
-    "title": "Behavioral Activation for Depression",
-    "summary": "Schedule small, achievable positive activities throughout your day, even when you don't feel motivated.",
-    "content": "Behavioral activation is a key component of treating depression that involves scheduling and engaging in pleasant or meaningful activities, even when motivation is low. The theory is that action can come before motivation - by engaging in activities, you can gradually lift your mood and increase positive experiences. Start with small, achievable activities and gradually build up. Create a list of activities that have brought you joy or a sense of accomplishment in the past. Schedule these activities in your calendar and commit to them regardless of how you feel. Track your mood before and after each activity to notice patterns and improvements."
+    "id": 4,
+    "title": "Dialectical Behavior Therapy",
+    "summary": "A specialized therapy combining cognitive techniques with mindfulness to manage intense emotions and improve relationships.",
+    "content": "Dialectical Behavior Therapy (DBT) was originally developed to treat borderline personality disorder but is now used for various conditions involving emotional dysregulation. DBT teaches four key skill sets: mindfulness (staying present), distress tolerance (coping with crises), emotion regulation (managing intense feelings), and interpersonal effectiveness (communicating effectively in relationships). The 'dialectical' component refers to balancing acceptance and change—accepting oneself while working toward positive change. DBT typically involves individual therapy, skills training groups, phone coaching, and therapist consultation teams.",
+    "keywords": ["emotion regulation", "distress tolerance", "interpersonal skills", "mindfulness", "borderline", "self-harm"]
   },
   {
-    "title": "Self-Compassion Practice",
-    "summary": "Speak to yourself as you would to a good friend who is going through a difficult time.",
-    "content": "Self-compassion involves treating yourself with the same kindness and understanding that you would offer to a good friend. When facing difficulties, ask yourself: 'How would I respond to a friend in this situation?' Often, we're much harsher with ourselves than we would be with others. Self-compassion has three components: self-kindness (being warm and understanding toward ourselves), common humanity (recognizing that suffering is part of the shared human experience), and mindfulness (taking a balanced approach to negative emotions). Practice speaking to yourself with gentle, supportive language, acknowledging your pain without judgment or self-criticism."
+    "id": 5,
+    "title": "Positive Psychology",
+    "summary": "A scientific approach focused on strengths, well-being, and positive aspects of life rather than disorders and weaknesses.",
+    "content": "Positive Psychology shifts focus from treating mental illness to cultivating happiness and well-being. Founded by Martin Seligman, this approach emphasizes five elements known as PERMA: Positive emotions, Engagement, Relationships, Meaning, and Accomplishment. Positive psychology interventions include practicing gratitude, identifying and using signature strengths, savoring positive experiences, performing acts of kindness, and building optimism. Research shows these practices can increase happiness, reduce depression, and improve overall life satisfaction.",
+    "keywords": ["happiness", "well-being", "strengths", "gratitude", "optimism", "fulfillment"]
   },
   {
-    "title": "Time-Out Strategy for Anger Management",
-    "summary": "When feeling overwhelmed with anger, take a break for 10-20 minutes before responding.",
-    "content": "The time-out strategy is a simple but effective anger management technique. When you notice yourself becoming angry or frustrated, take a deliberate break from the situation for 10-20 minutes. This allows your body's stress response to settle down and gives you time to think more clearly. During your time-out, engage in a calming activity like deep breathing, walking, or listening to music. Avoid ruminating on what made you angry. Instead, focus on cooling down physically and emotionally. When you return to the situation, you'll be better equipped to respond thoughtfully rather than react impulsively."
+    "id": 6,
+    "title": "Solution-Focused Brief Therapy",
+    "summary": "A goal-directed, future-focused approach emphasizing solutions rather than problems.",
+    "content": "Solution-Focused Brief Therapy (SFBT) concentrates on finding solutions in the present and exploring hope for the future, rather than analyzing past problems. Therapists help clients identify times when their problems are less severe or absent ('exceptions') and explore what's different during those times. Key techniques include the miracle question ('If a miracle happened and your problem disappeared overnight, how would you know?'), scaling questions to track progress, and identifying existing strengths and resources. SFBT is typically short-term, often requiring only a few sessions.",
+    "keywords": ["brief therapy", "solution-oriented", "goal setting", "future focus", "miracle question", "exceptions"]
   },
   {
-    "title": "Cognitive Reframing",
-    "summary": "Challenge thoughts like 'they always' or 'they never' with more balanced perspectives.",
-    "content": "Cognitive reframing is the process of identifying unhelpful or negative thought patterns and replacing them with more balanced and realistic ones. Words like 'always,' 'never,' 'should,' and 'must' often signal cognitive distortions. When you catch yourself thinking in absolutes, pause and challenge these thoughts: Is this really true 100% of the time? What evidence contradicts this thought? What would be a more balanced way to view this situation? For example, replace 'They never listen to me' with 'Sometimes they don't seem to hear what I'm saying, but there have been times when they've understood my perspective.' This more nuanced thinking leads to healthier emotional responses."
+    "id": 7,
+    "title": "Emotional Freedom Techniques",
+    "summary": "A therapeutic approach combining elements of exposure therapy with acupressure to address emotional distress.",
+    "content": "Emotional Freedom Techniques (EFT), often called 'tapping,' combines elements of cognitive therapy with acupressure. The approach involves tapping specific meridian points on the body while focusing on negative emotions or physical sensations and using affirmations. Proponents suggest this process helps balance energy systems and reduce distress. While more research is needed, some studies indicate EFT may help with anxiety, PTSD, and certain phobias. The technique is often taught as a self-help tool that clients can use between therapy sessions.",
+    "keywords": ["tapping", "energy psychology", "acupressure", "self-help", "anxiety relief", "trauma"]
   },
   {
-    "title": "Small Goals Approach for Overwhelming Tasks",
-    "summary": "Break tasks into the smallest possible steps and celebrate completing each one.",
-    "content": "When feeling overwhelmed or lacking motivation, breaking tasks into very small, manageable steps can help. Instead of thinking about cleaning the entire house, start with 'pick up one item and put it away.' Rather than 'exercise for 30 minutes,' begin with 'put on workout clothes' or 'do one stretch.' These micro-steps make tasks feel less daunting and provide quick wins that build momentum. Each completed step is worthy of acknowledgment - celebrate these small victories to reinforce progress. Over time, these small steps add up to significant accomplishments and help build self-efficacy and confidence."
+    "id": 8,
+    "title": "Narrative Therapy",
+    "summary": "An approach that helps individuals rewrite limiting stories about themselves to create more empowering narratives.",
+    "content": "Narrative Therapy views people as separate from their problems and helps them externalize challenging situations rather than internalizing them as part of their identity. The approach helps individuals recognize how cultural contexts and dominant social narratives influence their personal stories. Therapists help clients identify 'sparkling moments' that contradict problem-saturated narratives, develop richer, alternative storylines, and recruit an audience to witness and support their new narratives. The goal is to help people become authors of their own lives and construct preferred identities based on their values and skills.",
+    "keywords": ["storytelling", "externalization", "identity", "reauthoring", "social context", "preferred narrative"]
   },
   {
-    "title": "Thought Record Technique",
-    "summary": "Write down negative thoughts, identify the cognitive distortion, and create a more balanced thought.",
-    "content": "A thought record is a structured way to examine and challenge negative thinking patterns. Start by writing down the situation that triggered negative emotions, rate the intensity of these emotions (0-100%), and identify the automatic thoughts that came to mind. Look for cognitive distortions in these thoughts, such as black-and-white thinking, catastrophizing, or mind-reading. Next, gather evidence that both supports and contradicts these thoughts. Use this evidence to develop a more balanced perspective. Finally, rate your emotions again to see if their intensity has decreased. With practice, this technique helps build the habit of more balanced thinking."
+    "id": 9,
+    "title": "Interpersonal Therapy",
+    "summary": "A time-limited approach focusing on improving interpersonal relationships and social functioning to reduce distress.",
+    "content": "Interpersonal Therapy (IPT) is a time-limited treatment (typically 12-16 weeks) that focuses on resolving interpersonal issues linked to psychological distress. IPT was originally developed for depression but is now used for various conditions. The therapy addresses four primary areas: grief (complicated bereavement), role disputes (conflicts with significant others), role transitions (life changes like divorce or job loss), and interpersonal deficits (difficulties forming and maintaining relationships). IPT helps clients improve communication skills, express emotions effectively, and build stronger social support networks.",
+    "keywords": ["relationships", "communication", "social support", "role transitions", "grief", "depression"]
   },
   {
-    "title": "Progressive Muscle Relaxation",
-    "summary": "Tense and then release each muscle group from toes to head to reduce physical tension.",
-    "content": "Progressive Muscle Relaxation (PMR) helps reduce physical tension by systematically tensing and relaxing different muscle groups. Find a quiet place where you won't be disturbed. Starting with your toes, tense the muscles as tightly as you can for 5 seconds, then relax them for 30 seconds, noticing the difference between tension and relaxation. Work your way up through your body: feet, calves, thighs, abdomen, chest, hands, arms, shoulders, neck, and face. Take slow, deep breaths throughout the exercise. Regular practice of PMR can help lower overall tension levels and increase awareness of physical stress signals."
-  },
-  {
-    "title": "Mindful Focus Exercise",
-    "summary": "Focus completely on one simple task like washing dishes, bringing attention back whenever your mind wanders.",
-    "content": "Mindful focus involves bringing your full attention to a simple everyday activity. Choose a routine task like washing dishes, brushing your teeth, or walking. As you perform the task, engage all your senses: notice the sensations, sounds, smells, and sights involved. When your mind inevitably wanders to thoughts about the past or future, gently bring your attention back to the physical sensations of the task without judgment. This practice builds the mental 'muscle' of attention and presence, which can be applied to other areas of life. Even 5 minutes of mindful focus can help reduce stress and increase awareness of the present moment."
-  },
-  {
-    "title": "Exposure Hierarchy for Fear",
-    "summary": "Create a ladder of feared situations from least to most anxiety-provoking, and gradually expose yourself to each level.",
-    "content": "Exposure therapy is based on the principle that gradually facing feared situations helps reduce anxiety over time. Start by creating an exposure hierarchy - a list of situations related to your fear, ranked from least to most anxiety-provoking (scale of 0-100). Begin with the least anxiety-provoking item (around 30-40 on your scale) and expose yourself to it repeatedly until your anxiety decreases by half. Then move to the next item on your hierarchy. For example, if you have social anxiety, your hierarchy might include: texting a friend (30), making a phone call (50), meeting one person for coffee (70), and attending a large gathering (90). The key is consistent practice and not moving on until you've experienced habituation (decreased anxiety) at each level."
-  },
-  {
-    "title": "Worry Time Technique",
-    "summary": "Schedule 15-30 minutes daily to focus on worries, postponing worry thoughts outside of this time.",
-    "content": "Worry Time is a technique that helps contain excessive worrying by establishing a specific time each day dedicated to addressing your concerns. Choose a 15-30 minute period (not close to bedtime) to be your designated 'Worry Time.' When worries arise during the day, briefly note them down and then consciously postpone thinking about them until your scheduled Worry Time. During Worry Time, review your list of worries, reflect on them, and problem-solve where possible. When the allotted time ends, put away your worry list and engage in another activity. This technique helps break the habit of constant worrying throughout the day while still acknowledging legitimate concerns."
-  },
-  {
-    "title": "Gratitude Practice",
-    "summary": "Write down three things you're grateful for each day to shift focus toward positive aspects of life.",
-    "content": "Gratitude practice involves intentionally focusing on and appreciating the positive aspects of life, which can significantly improve psychological well-being. Each day, preferably in the morning or evening, write down three specific things you're grateful for. Be detailed and try to include different items each day. These can range from significant relationships to simple pleasures like a warm cup of tea or a beautiful sunset. Beyond listing items, take a moment to truly feel the gratitude in your body. Research shows that regular gratitude practice can increase happiness, reduce depression, improve sleep, and enhance resilience to stress over time."
-  },
-  {
-    "title": "RAIN Technique for Difficult Emotions",
-    "summary": "Recognize, Allow, Investigate, and Nurture difficult emotions without being overwhelmed by them.",
-    "content": "RAIN is a mindfulness approach for working with difficult emotions. R - Recognize the emotion you're experiencing and name it. A - Allow the feeling to be present without trying to change it, suppress it, or make it go away. I - Investigate with curiosity and care how the emotion feels in your body, what thoughts accompany it, and what it might be trying to tell you. N - Nurture yourself with self-compassion, recognizing that difficult emotions are part of the human experience and that you deserve kindness. This approach helps create space between you and your emotions, so you're experiencing them without being defined or overwhelmed by them."
-  },
-  {
-    "title": "Values Clarification Exercise",
-    "summary": "Identify your core personal values to guide meaningful decisions and create a sense of purpose.",
-    "content": "Values clarification helps identify what's truly important to you, providing direction and meaning in life. Consider different life domains (relationships, work, personal growth, etc.) and ask: What kind of person do I want to be in this area? What principles do I want to guide my actions? What feels deeply meaningful to me? Create a list of potential values (e.g., authenticity, compassion, growth, creativity) and narrow it down to 5-7 core values. For each core value, define what living in alignment with this value looks like in concrete terms. Use these values as a compass when making decisions, setting goals, or navigating difficult situations. Regular reflection on your values can increase sense of purpose and life satisfaction."
-  },
-  {
-    "title": "Sleep Hygiene Practices",
-    "summary": "Establish consistent sleep routines and habits to improve sleep quality and mental health.",
-    "content": "Good sleep is fundamental to mental health. Establish a consistent sleep schedule by going to bed and waking up at the same time every day, even on weekends. Create a relaxing bedtime routine that signals to your body it's time to wind down (reading, gentle stretching, warm bath). Make your sleep environment comfortable, cool, dark, and quiet. Limit exposure to screens at least one hour before bed, as blue light disrupts melatonin production. Avoid caffeine after mid-afternoon and limit alcohol, which may help with falling asleep but disrupts sleep quality. If you can't fall asleep within 20 minutes, get up and do something relaxing until you feel sleepy. Consistent sleep hygiene practices can dramatically improve both sleep quality and overall mental well-being."
-  },
-  {
-    "title": "Boundary Setting Framework",
-    "summary": "Establish healthy personal boundaries to protect your well-being and improve relationships.",
-    "content": "Healthy boundaries protect your mental and emotional well-being while allowing for meaningful connections with others. Start by identifying areas where you feel drained, resentful, or uncomfortable - these often signal boundary needs. Boundaries can be physical (personal space), emotional (sharing feelings), time-related (work-life balance), or intellectual (respecting opinions). Practice communicating boundaries clearly and directly using 'I' statements: 'I need...', 'I feel...', 'I'm comfortable with...' Remember that different relationships may require different boundaries, and it's okay to adjust them over time. Setting boundaries isn't selfish - it's a form of self-care that ultimately leads to healthier, more authentic relationships."
-  },
-  {
-    "title": "Distress Tolerance Skills",
-    "summary": "Techniques to help endure difficult emotions when immediate change isn't possible.",
-    "content": "Distress tolerance skills help us survive emotional crises without making the situation worse. The ACCEPTS approach offers several strategies: Activities (engage in something that demands attention), Contributing (help others), Comparisons (remember times you've coped successfully), Emotions (generate different emotions through music, humor, etc.), Pushing away (temporarily put the situation on a mental shelf), Thoughts (redirect your mind to something else), and Sensations (use intense physical sensations like holding ice to interrupt emotional distress). Another helpful technique is TIPP: Temperature (splash cold water on your face), Intense exercise, Paced breathing, and Progressive muscle relaxation. These skills create space between impulse and action during emotional storms."
-  },
-  {
-    "title": "Crisis Safety Planning",
-    "summary": "Create a personalized plan with specific steps to follow during mental health crises.",
-    "content": "A crisis safety plan is a written document that outlines steps to take when experiencing a mental health crisis. Start by identifying personal warning signs that indicate you're entering a crisis (thoughts, emotions, behaviors). List coping strategies that help calm or ground you, organized from simplest to most involved. Include contact information for supportive people you can reach out to (friends, family, professionals). Add professional resources like your therapist, local crisis team, and the National Suicide Prevention Lifeline (988). Remove or secure access to means of self-harm if applicable. Keep your plan easily accessible (wallet, phone) and share it with trusted support people. Review and update it regularly, especially after any crisis. Having a concrete plan reduces uncertainty during difficult moments and increases the likelihood of helpful action."
-  },
-  {
-    "title": "Emotional Awareness Exercise",
-    "summary": "Improve your ability to identify and name emotions for better regulation and understanding.",
-    "content": "Emotional awareness is the ability to recognize and name your feelings as they arise. Many people struggle with limited emotional vocabulary, often describing themselves simply as 'fine,' 'bad,' or 'stressed.' Expanding your emotional awareness starts with regular check-ins. Several times throughout the day, pause and ask: What am I feeling right now? Where do I feel it in my body? Try to be specific with emotion words (e.g., not just 'bad' but 'disappointed,' 'embarrassed,' or 'lonely'). Keep an emotion journal, noting triggers and physical sensations. Use emotion wheels (available online) to expand your vocabulary. Remember that emotions often come in layers - there may be primary emotions (like sadness) beneath secondary ones (like anger). Greater emotional awareness leads to better self-regulation and communication with others."
+    "id": 10,
+    "title": "Compassion-Focused Therapy",
+    "summary": "A therapeutic approach that helps develop self-compassion and kindness toward oneself and others.",
+    "content": "Compassion-Focused Therapy (CFT), developed by Paul Gilbert, helps individuals who experience high levels of shame and self-criticism. Based on evolutionary psychology, neuroscience, and Buddhist psychology, CFT suggests we have three emotion regulation systems: threat (protection), drive (achievement), and soothing (connection). People with high shame often have overactive threat systems and underdeveloped soothing systems. CFT uses mindfulness, imagery, and specific exercises to develop self-compassion, helping clients respond to difficulties with kindness rather than self-criticism. Techniques include compassionate mind training, soothing rhythm breathing, and creating a compassionate self-image.",
+    "keywords": ["self-compassion", "shame", "self-criticism", "soothing", "kindness", "mindfulness"]
   }
 ]

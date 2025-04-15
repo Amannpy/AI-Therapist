@@ -1,0 +1,520 @@
+{% extends 'layout.html' %}
+
+{% block title %}Mood Tracker{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 mb-4">Mood Tracker</h1>
+            <p class="lead">Track your mood patterns over time and gain insights into your emotional well-being.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Mood Entry Widget -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Record Your Mood</h5>
+                </div>
+                <div class="card-body">
+                    <form id="mood-form">
+                        <div class="mb-3">
+                            <label for="emotion" class="form-label">How are you feeling?</label>
+                            <div class="mood-selector mb-3">
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <div class="mood-option" data-emotion="happy">
+                                        <div class="mood-icon">😊</div>
+                                        <div class="mood-label">Happy</div>
+                                    </div>
+                                    <div class="mood-option" data-emotion="sad">
+                                        <div class="mood-icon">😔</div>
+                                        <div class="mood-label">Sad</div>
+                                    </div>
+                                    <div class="mood-option" data-emotion="angry">
+                                        <div class="mood-icon">😠</div>
+                                        <div class="mood-label">Angry</div>
+                                    </div>
+                                    <div class="mood-option" data-emotion="anxious">
+                                        <div class="mood-icon">😰</div>
+                                        <div class="mood-label">Anxious</div>
+                                    </div>
+                                    <div class="mood-option" data-emotion="calm">
+                                        <div class="mood-icon">😌</div>
+                                        <div class="mood-label">Calm</div>
+                                    </div>
+                                    <div class="mood-option" data-emotion="tired">
+                                        <div class="mood-icon">😴</div>
+                                        <div class="mood-label">Tired</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="selected-emotion" name="emotion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="intensity-slider" class="form-label">Intensity: <span id="intensity-value">5</span></label>
+                            <input type="range" class="form-range" id="intensity-slider" min="1" max="10" value="5">
+                            <div class="d-flex justify-content-between small text-muted">
+                                <span>Mild</span>
+                                <span>Moderate</span>
+                                <span>Strong</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">Notes (optional)</label>
+                            <textarea class="form-control" id="notes" rows="2" placeholder="What's on your mind?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" id="save-mood-btn">
+                            <i class="fas fa-save me-2"></i>Save Mood
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mood Chart -->
+        <div class="col-md-8 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Mood Over Time</h5>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-sm btn-outline-light active" data-period="week">Week</button>
+                            <button type="button" class="btn btn-sm btn-outline-light" data-period="month">Month</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="mood-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mood History -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-history me-2"></i>Recent Moods</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Mood</th>
+                                    <th>Intensity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mood-history">
+                                {% for record in emotion_records %}
+                                <tr>
+                                    <td>{{ record.created_at.strftime('%Y-%m-%d') }}</td>
+                                    <td>{{ record.created_at.strftime('%H:%M') }}</td>
+                                    <td>
+                                        <span class="mood-emoji">
+                                            {% if record.emotion == 'happy' %}😊
+                                            {% elif record.emotion == 'sad' %}😔
+                                            {% elif record.emotion == 'angry' %}😠
+                                            {% elif record.emotion == 'anxious' %}😰
+                                            {% elif record.emotion == 'calm' %}😌
+                                            {% elif record.emotion == 'tired' %}😴
+                                            {% else %}🙂
+                                            {% endif %}
+                                        </span>
+                                        {{ record.emotion|capitalize }}
+                                    </td>
+                                    <td>{{ (record.intensity * 10)|int }}/10</td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="4" class="text-center">No mood records yet. Start tracking above!</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mood Insights -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-lightbulb me-2"></i>Mood Insights</h5>
+                </div>
+                <div class="card-body">
+                    <div id="mood-insights">
+                        <p>Track your mood regularly to gain personalized insights about your emotional patterns.</p>
+                        <div class="insights-placeholder">
+                            <ul>
+                                <li>See how your mood changes throughout the day and week</li>
+                                <li>Identify triggers that might affect your emotional state</li>
+                                <li>Discover activities and practices that improve your mood</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .mood-selector {
+        margin: 1rem 0;
+    }
+    
+    .mood-option {
+        cursor: pointer;
+        text-align: center;
+        margin: 0.5rem;
+        transition: all 0.2s;
+        border-radius: 10px;
+        padding: 0.75rem;
+        width: 80px;
+        border: 2px solid transparent;
+    }
+    
+    .mood-option:hover {
+        background-color: var(--bs-gray-800);
+    }
+    
+    .mood-option.selected {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+    }
+    
+    .mood-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .mood-label {
+        font-size: 0.8rem;
+    }
+    
+    .mood-emoji {
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+    }
+    
+    .chart-container {
+        position: relative;
+        height: 300px;
+    }
+    
+    .insights-placeholder {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: var(--bs-gray-800);
+        border-radius: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Variables
+        const moodForm = document.getElementById('mood-form');
+        const moodOptions = document.querySelectorAll('.mood-option');
+        const selectedEmotionInput = document.getElementById('selected-emotion');
+        const intensitySlider = document.getElementById('intensity-slider');
+        const intensityValue = document.getElementById('intensity-value');
+        const saveMoodBtn = document.getElementById('save-mood-btn');
+        const periodButtons = document.querySelectorAll('[data-period]');
+        const moodHistoryTable = document.getElementById('mood-history');
+        const moodInsights = document.getElementById('mood-insights');
+        
+        // Emotion data from server
+        const emotionData = {{ emotion_data|safe }};
+        
+        // Initialize mood chart
+        let moodChart;
+        createMoodChart('week');
+        
+        // Event listeners
+        moodOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                moodOptions.forEach(o => o.classList.remove('selected'));
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Update hidden input value
+                selectedEmotionInput.value = this.dataset.emotion;
+            });
+        });
+        
+        // Update intensity value display when slider changes
+        intensitySlider.addEventListener('input', function() {
+            intensityValue.textContent = this.value;
+        });
+        
+        // Period button click handlers
+        periodButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                periodButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                createMoodChart(this.dataset.period);
+            });
+        });
+        
+        // Form submission
+        moodForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (!selectedEmotionInput.value) {
+                alert('Please select a mood');
+                return;
+            }
+            
+            // Disable save button and show loading state
+            saveMoodBtn.disabled = true;
+            saveMoodBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...';
+            
+            // Prepare data
+            const emotion = selectedEmotionInput.value;
+            const intensity = intensitySlider.value / 10; // Convert to 0-1 scale for backend
+            const notes = document.getElementById('notes').value;
+            
+            // Send data to server
+            fetch('/api/mood', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    emotion: emotion,
+                    intensity: intensity,
+                    notes: notes
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Reset form
+                moodOptions.forEach(o => o.classList.remove('selected'));
+                selectedEmotionInput.value = '';
+                intensitySlider.value = 5;
+                intensityValue.textContent = '5';
+                document.getElementById('notes').value = '';
+                
+                // Re-enable save button
+                saveMoodBtn.disabled = false;
+                saveMoodBtn.innerHTML = '<i class="fas fa-save me-2"></i>Save Mood';
+                
+                // Show success message
+                alert('Mood recorded successfully!');
+                
+                // Reload page to update chart and history
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error recording mood:', error);
+                alert('Error recording mood. Please try again.');
+                
+                // Re-enable save button
+                saveMoodBtn.disabled = false;
+                saveMoodBtn.innerHTML = '<i class="fas fa-save me-2"></i>Save Mood';
+            });
+        });
+        
+        // Function to create mood chart
+        function createMoodChart(period) {
+            // Prepare data based on period
+            const days = period === 'week' ? 7 : 30;
+            const labels = [];
+            const datasets = [];
+            
+            // Generate date labels
+            for (let i = days - 1; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                labels.push(formatDate(date));
+            }
+            
+            // Define mood colors
+            const moodColors = {
+                'happy': 'rgba(255, 193, 7, 0.8)',
+                'sad': 'rgba(13, 110, 253, 0.8)',
+                'angry': 'rgba(220, 53, 69, 0.8)',
+                'anxious': 'rgba(108, 117, 125, 0.8)',
+                'calm': 'rgba(25, 135, 84, 0.8)',
+                'tired': 'rgba(111, 66, 193, 0.8)',
+                'default': 'rgba(173, 181, 189, 0.8)'
+            };
+            
+            // Collect all unique emotions
+            const emotions = new Set();
+            for (const date in emotionData) {
+                for (const emotion in emotionData[date]) {
+                    emotions.add(emotion);
+                }
+            }
+            
+            // Create dataset for each emotion
+            emotions.forEach(emotion => {
+                const data = [];
+                
+                // Fill data array with values or zeros
+                for (const label of labels) {
+                    if (emotionData[label] && emotionData[label][emotion]) {
+                        data.push(emotionData[label][emotion] * 10); // Scale to 0-10
+                    } else {
+                        data.push(0);
+                    }
+                }
+                
+                // Create dataset
+                datasets.push({
+                    label: emotion.charAt(0).toUpperCase() + emotion.slice(1),
+                    data: data,
+                    borderColor: moodColors[emotion] || moodColors.default,
+                    backgroundColor: moodColors[emotion] || moodColors.default,
+                    tension: 0.4
+                });
+            });
+            
+            // Destroy previous chart if exists
+            if (moodChart) {
+                moodChart.destroy();
+            }
+            
+            // Create new chart
+            const ctx = document.getElementById('mood-chart').getContext('2d');
+            moodChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10,
+                            title: {
+                                display: true,
+                                text: 'Intensity (1-10)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    }
+                }
+            });
+            
+            // Update insights based on data
+            updateInsights();
+        }
+        
+        // Helper function to format date
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+        
+        // Function to update insights based on mood data
+        function updateInsights() {
+            // Only generate insights if we have enough data
+            const dataPoints = Object.keys(emotionData).length;
+            
+            if (dataPoints < 3) {
+                // Not enough data yet
+                return;
+            }
+            
+            // Count emotions
+            const emotionCounts = {};
+            let totalIntensity = 0;
+            let dataPointsWithIntensity = 0;
+            
+            for (const date in emotionData) {
+                for (const emotion in emotionData[date]) {
+                    if (!emotionCounts[emotion]) {
+                        emotionCounts[emotion] = 0;
+                    }
+                    emotionCounts[emotion]++;
+                    
+                    totalIntensity += emotionData[date][emotion];
+                    dataPointsWithIntensity++;
+                }
+            }
+            
+            // Find most common emotion
+            let mostCommonEmotion = null;
+            let highestCount = 0;
+            
+            for (const emotion in emotionCounts) {
+                if (emotionCounts[emotion] > highestCount) {
+                    highestCount = emotionCounts[emotion];
+                    mostCommonEmotion = emotion;
+                }
+            }
+            
+            // Calculate average intensity
+            const avgIntensity = dataPointsWithIntensity > 0 
+                ? Math.round((totalIntensity / dataPointsWithIntensity) * 10) 
+                : 0;
+            
+            // Generate insights text
+            let insightsHTML = '<p>Based on your mood tracking data:</p><ul>';
+            
+            if (mostCommonEmotion) {
+                insightsHTML += `<li>Your most frequent mood is <strong>${mostCommonEmotion}</strong></li>`;
+            }
+            
+            insightsHTML += `<li>Your average mood intensity is <strong>${avgIntensity}/10</strong></li>`;
+            
+            // Add specific insights based on emotions
+            if (emotionCounts['anxious'] && emotionCounts['anxious'] >= 3) {
+                insightsHTML += '<li>You\'ve been feeling anxious frequently. Consider trying mindfulness techniques.</li>';
+            }
+            
+            if (emotionCounts['happy'] && emotionCounts['happy'] >= dataPoints * 0.6) {
+                insightsHTML += '<li>You\'ve been in a positive mood most of the time. Great job!</li>';
+            }
+            
+            if (emotionCounts['tired'] && emotionCounts['tired'] >= 3) {
+                insightsHTML += '<li>You\'ve reported feeling tired multiple times. Consider your sleep patterns and energy levels.</li>';
+            }
+            
+            insightsHTML += '</ul>';
+            
+            // Update the insights section
+            moodInsights.innerHTML = insightsHTML;
+        }
+    });
+</script>
+{% endblock %}

@@ -275,3 +275,88 @@ def assessment_history():
         })
     
     return jsonify(history)
+
+@app.route('/mood-tracker')
+@login_required
+def mood_tracker():
+    """Render the mood tracker page"""
+    # Get the user's emotion records for the last 30 days
+    emotion_records = EmotionRecord.query.filter_by(user_id=current_user.id).order_by(EmotionRecord.created_at.desc()).limit(30).all()
+    
+    # Group emotions by date for the chart
+    emotion_data = {}
+    for record in emotion_records:
+        date = record.created_at.strftime('%Y-%m-%d')
+        if date not in emotion_data:
+            emotion_data[date] = {}
+        
+        if record.emotion not in emotion_data[date]:
+            emotion_data[date][record.emotion] = 0
+        
+        emotion_data[date][record.emotion] += record.intensity
+    
+    return render_template(
+        'mood_tracker.html',
+        emotion_records=emotion_records,
+        emotion_data=json.dumps(emotion_data)
+    )
+
+@app.route('/api/mood', methods=['POST'])
+@login_required
+def record_mood():
+    """API endpoint to record the user's mood"""
+    data = request.json
+    emotion = data.get('emotion')
+    intensity = data.get('intensity', 1.0)
+    notes = data.get('notes', '')
+    
+    if not emotion:
+        return jsonify({'error': 'Emotion is required'}), 400
+    
+    # Validate intensity is between 0 and 1
+    try:
+        intensity = float(intensity)
+        if intensity < 0 or intensity > 1:
+            return jsonify({'error': 'Intensity must be between 0 and 1'}), 400
+    except ValueError:
+        return jsonify({'error': 'Intensity must be a number'}), 400
+    
+    # Create a new emotion record
+    emotion_record = EmotionRecord(
+        user_id=current_user.id,
+        emotion=emotion,
+        intensity=intensity
+    )
+    
+    db.session.add(emotion_record)
+    db.session.commit()
+    
+    return jsonify({
+        'id': emotion_record.id,
+        'emotion': emotion_record.emotion,
+        'intensity': emotion_record.intensity,
+        'created_at': emotion_record.created_at.strftime('%Y-%m-%d %H:%M:%S')
+    })
+
+@app.route('/api/mood-history')
+@login_required
+def mood_history():
+    """API endpoint to get the user's mood history"""
+    # Get query parameters
+    days = request.args.get('days', 30, type=int)
+    
+    # Get the user's emotion records
+    emotion_records = EmotionRecord.query.filter_by(user_id=current_user.id).order_by(EmotionRecord.created_at.desc()).limit(days).all()
+    
+    # Format the records for the response
+    history = []
+    for record in emotion_records:
+        history.append({
+            'id': record.id,
+            'emotion': record.emotion,
+            'intensity': record.intensity,
+            'date': record.created_at.strftime('%Y-%m-%d'),
+            'time': record.created_at.strftime('%H:%M:%S')
+        })
+    
+    return jsonify(history)
