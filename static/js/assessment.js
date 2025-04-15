@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Move to next question
-            currentQuestion = questionNumber;
+            currentQuestion = questionNumber + 1;
             updateVisibleQuestion();
             updateProgressBar();
             scrollToTop();
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const questionNumber = parseInt(questionGroup.dataset.question);
             if (questionNumber < totalQuestions - 1) {
                 setTimeout(() => {
-                    currentQuestion = questionNumber;
+                    currentQuestion = questionNumber + 1;
                     updateVisibleQuestion();
                     updateProgressBar();
                     scrollToTop();
