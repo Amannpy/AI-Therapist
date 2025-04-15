@@ -68,6 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.crisis_detected) {
                 showCrisisAlert();
             }
+            
+            // Show API error notification if needed
+            if (data.api_error) {
+                showApiErrorAlert();
+            }
         })
         .catch(error => {
             console.error('Error sending message:', error);
@@ -205,5 +210,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Insert at top of chat
         chatHistory.insertBefore(alertElement, chatHistory.firstChild);
+    }
+    
+    // Function to show API error alert
+    function showApiErrorAlert() {
+        const alertElement = document.createElement('div');
+        alertElement.className = 'alert alert-warning api-error-alert';
+        alertElement.innerHTML = `
+            <strong>Notice:</strong> The AI service is currently experiencing some limitations. 
+            <p>The administrator has been notified. In the meantime, your conversation history is still being saved.</p>
+        `;
+        
+        // Insert at top of chat
+        chatHistory.insertBefore(alertElement, chatHistory.firstChild);
+        
+        // Remove the alert after 10 seconds
+        setTimeout(() => {
+            alertElement.remove();
+        }, 10000);
     }
 });

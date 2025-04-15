@@ -68,5 +68,12 @@ def get_ai_response(user_message, emotion, relevant_resources, crisis_detected=F
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
-        print(f"Error getting AI response: {e}")
-        return "I'm having trouble connecting right now. Could you please try again in a moment?"
+        error_message = str(e)
+        print(f"Error getting AI response: {error_message}")
+        
+        if "insufficient_quota" in error_message:
+            return "I apologize, but the AI service is currently unavailable due to API usage limits. Please contact the administrator to update the API quota or provide a new API key."
+        elif "429" in error_message:
+            return "The AI service is temporarily unavailable due to high demand. Please try again in a few moments."
+        else:
+            return "I'm having trouble connecting right now. Could you please try again in a moment?"

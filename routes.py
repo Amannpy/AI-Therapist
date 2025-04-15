@@ -215,6 +215,11 @@ def send_message():
         crisis_level
     )
     
+    # Check if the response indicates an API error
+    api_error = False
+    if "API usage limits" in ai_response or "temporarily unavailable" in ai_response:
+        api_error = True
+    
     # Save AI response
     ai_chat = ChatMessage(
         user_id=current_user.id,
@@ -228,6 +233,7 @@ def send_message():
         'message': ai_response,
         'emotion': emotion,
         'crisis_detected': crisis_detected,
+        'api_error': api_error,
         'user_message_id': user_chat.id,
         'ai_message_id': ai_chat.id
     }
