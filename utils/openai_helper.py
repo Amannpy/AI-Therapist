@@ -75,5 +75,15 @@ def get_ai_response(user_message, emotion, relevant_resources, crisis_detected=F
             return "I apologize, but the AI service is currently unavailable due to API usage limits. Please contact the administrator to update the API quota or provide a new API key."
         elif "429" in error_message:
             return "The AI service is temporarily unavailable due to high demand. Please try again in a few moments."
+        elif "invalid_api_key" in error_message or "401" in error_message:
+            return "I apologize, but there seems to be an issue with the API authentication. Please contact the administrator to provide a valid API key."
         else:
-            return "I'm having trouble connecting right now. Could you please try again in a moment?"
+            # Provide a meaningful fallback response based on the detected emotion
+            if emotion in ["sad", "depressed", "down"]:
+                return "I notice you might be feeling down. While we're experiencing some technical difficulties, remember that it's okay to reach out to friends, family, or professional support when needed. Deep breathing exercises and gentle physical activity can sometimes help lift your mood."
+            elif emotion in ["anxious", "worried", "stressed"]:
+                return "I sense you might be feeling anxious. While our systems are currently experiencing technical issues, a quick grounding exercise might help: try naming 5 things you can see, 4 things you can touch, 3 things you can hear, 2 things you can smell, and 1 thing you can taste."
+            elif emotion in ["angry", "frustrated", "upset"]:
+                return "I can understand feeling frustrated, especially when technology isn't working as expected. Taking a short break, some deep breaths, or a brief walk might help provide some perspective."
+            else:
+                return "I apologize for the technical difficulties we're experiencing. While I work to resolve this issue, is there something specific you'd like to discuss or any particular coping strategies you've found helpful in the past?"
