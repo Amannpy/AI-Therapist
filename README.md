@@ -1,7 +1,7 @@
-# MentalWellAI - AI-Powered Mental Health Support Platform
+# AI Therapist - AI-Powered Mental Health Support Platform
 
 ## Overview
-MentalWellAI is an innovative mental health support platform that combines artificial intelligence with traditional mental health assessment tools. The application provides personalized support, emotion tracking, and continuous mental well-being monitoring through an intuitive chat interface powered by Google's Gemini AI.
+AI Therapist is an innovative mental health support platform that combines artificial intelligence with traditional mental health assessment tools. The application provides personalized support, emotion tracking, and continuous mental well-being monitoring through an intuitive chat interface powered by Google's Gemini AI.
 
 ![image](https://github.com/user-attachments/assets/37c39fcd-8f33-4eef-9a84-65c4df6069d4)
 ![image](https://github.com/user-attachments/assets/44fd41de-1950-4270-84f0-8f8de33c8ccd)
