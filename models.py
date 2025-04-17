@@ -1,12 +1,8 @@
 from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import db, login_manager
+from extensions import db, login_manager  # Changed this line
 import json
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -64,3 +60,8 @@ class EmotionRecord(db.Model):
 
     def __repr__(self):
         return f'<EmotionRecord {self.id} by User {self.user_id}>'
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
