@@ -1,47 +1,31 @@
-import os
-import logging
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
-from flask_login import LoginManager
-from sqlalchemy.orm import DeclarativeBase
-from werkzeug.middleware.proxy_fix import ProxyFix
+from extensions import db, login_manager
+import logging  # Add this import
+from dotenv import load_dotenv  # Add this
+import os  # Add this
 
-# Configure logging
-logging.basicConfig(level=logging.DEBUG)
+# Load environment variables
+load_dotenv()  # Add this
+
+# Configure logger
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 logger = logging.getLogger(__name__)
 
-class Base(DeclarativeBase):
-    pass
-
-# Initialize extensions
-db = SQLAlchemy(model_class=Base)
-login_manager = LoginManager()
-
-# Create the app
 app = Flask(__name__)
-app.secret_key = os.environ.get("SESSION_SECRET", "dev_secret_key")
-app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
-
-# Configure CORS
-CORS(app)
-
-# Configure database
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///therapy.db")
-app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-    "pool_recycle": 300,
-    "pool_pre_ping": True,
-}
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-# Initialize extensions with app
+# Configure your app here
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mental_well.db'
+app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
+app.config['GOOGLE_GEMINI_API_KEY'] = os.getenv('GOOGLE_GEMINI_API_KEY')  # Add this line
+# Initialize extensions
 db.init_app(app)
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 # Create tables within app context
 with app.app_context():
-    # Import models here to avoid circular imports
     from models import User, Assessment, ChatMessage, EmotionRecord
     db.create_all()
 
