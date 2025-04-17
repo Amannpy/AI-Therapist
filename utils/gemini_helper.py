@@ -2,7 +2,7 @@ import os
 import google.generativeai as genai
 
 # Set up the Gemini API
-GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
+GEMINI_API_KEY = os.environ.get("GOOGLE_GEMINI_API_KEY", "")
 MODEL = "gemini-1.5-pro"
 
 # Configure the Gemini API
