@@ -1,5 +1,8 @@
 # AI Therapist - AI-Powered Mental Health Support Platform
 try it for yourself at: https://ai-therapist-87bb.onrender.com/
+## System Architecture
+![Editor _ Mermaid Chart-2025-04-21-044338](https://github.com/user-attachments/assets/856525f3-0313-4c46-b24b-d6748ec0e1dc)
+
 ## Overview
 AI Therapist is an innovative mental health support platform that combines artificial intelligence with traditional mental health assessment tools. The application provides personalized support, emotion tracking, and continuous mental well-being monitoring through an intuitive chat interface powered by Google's Gemini AI.
 
